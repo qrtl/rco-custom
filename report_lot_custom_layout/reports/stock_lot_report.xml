@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="action_report_lot_custom_label" model="ir.actions.report">
+        <field name="name">Lot/Serial Number- Custom (PDF)</field>
+        <field name="model">stock.lot</field>
+        <field name="report_type">qweb-pdf</field>
+        <field
+            name="report_name"
+        >report_lot_custom_layout.report_lot_custom_label</field>
+        <field
+            name="report_file"
+        >report_lot_custom_layout.report_lot_custom_label</field>
+        <field name="paperformat_id" ref="product.paperformat_label_sheet" />
+        <field name="print_report_name">'Lot-Serial - %s' % object.name</field>
+        <field name="binding_model_id" ref="stock.model_stock_lot" />
+        <field name="binding_type">report</field>
+    </record>
+</odoo>
