@@ -8,7 +8,7 @@
                 t-foreach="[docs[x:x + nRows * nCols] for x in range(0, len(docs), nRows * nCols)]"
                 t-as="page_docs"
                 class="o_label_sheet"
-                t-att-style="'padding: 107mm 29mm'"
+                t-att-style="'padding: 107mm 27mm'"
             >
                 <table class="my-0 table table-sm table-borderless">
                     <t t-foreach="range(nRows)" t-as="row">
@@ -28,7 +28,7 @@
                                     t-att-style="barcode_index &gt;= len(page_docs) and 'visibility:hidden'"
                                 >
                                     <div
-                                        t-att-style="'font-size:50px !important; position:relative; width:150mm; height:80mm; border: 1px solid %s;' % (o.env.user.company_id.primary_color or 'black')"
+                                        t-att-style="'font-size:27px !important; position:relative; width:150mm; height:80mm; border: 1px solid %s;' % (o.env.user.company_id.primary_color or 'black')"
                                     >
                                         <t t-set="final_barcode" t-value="''" />
                                         <t
@@ -75,7 +75,7 @@
                                         <t t-else="">
                                             <div
                                                 t-field="o.name"
-                                                t-options="{'widget': 'barcode', 'img_style': 'width:100%; height:50px'}"
+                                                t-options="{'widget': 'barcode', 'img_style': 'width:100%; height:150px'}"
                                             />
                                         </t>
                                     </div>
@@ -86,5 +86,40 @@
                 </table>
             </div>
         </t>
+    </template>
+    <template
+        id="report_lot_custom_label_expiry"
+        inherit_id="report_lot_custom_layout.report_lot_custom_label"
+    >
+        <xpath expr="//div[@name='lot_name']" position="after">
+            <t t-if="o.use_expiration_date">
+                <div class="o_label_4x12" t-if="o.use_date">
+                    B.b. <t
+                        t-out="o.use_date"
+                        t-options="{&quot;widget&quot;: &quot;date&quot;}"
+                    />
+                </div>
+                <div class="o_label_4x12" t-if="o.expiration_date">
+                    Exp. <t
+                        t-out="o.expiration_date"
+                        t-options="{&quot;widget&quot;: &quot;date&quot;}"
+                    />
+                </div>
+            </t>
+        </xpath>
+        <xpath expr="//t[@name='gs1_datamatrix_lot']" position="before">
+            <t t-if="o.use_expiration_date">
+                <t
+                    t-if="o.use_date"
+                    t-set="final_barcode"
+                    t-value="(final_barcode or '') + '15' + o.use_date.strftime('%y%m%d')"
+                />
+                <t
+                    t-if="o.expiration_date"
+                    t-set="final_barcode"
+                    t-value="(final_barcode or '') + '17' + o.expiration_date.strftime('%y%m%d')"
+                />
+            </t>
+        </xpath>
     </template>
 </odoo>
