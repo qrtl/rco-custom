@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="mrp_production_tree_view" model="ir.ui.view">
+        <field name="name">mrp.production.tree.inherit</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_tree_view" />
+        <field name="arch" type="xml">
+            <field name="date_planned_start" position="attributes">
+                <attribute name="widget">date</attribute>
+                <attribute
+                    name="decoration-danger"
+                >date_planned_start and (date_planned_start &lt; datetime.datetime.combine(datetime.date.today(), datetime.time(0,0,0)).to_utc().strftime('%Y-%m-%d %H:%M:%S'))</attribute>
+                <attribute
+                    name="decoration-warning"
+                >date_planned_start and date_planned_start &gt;= datetime.datetime.combine(datetime.date.today(), datetime.time(0,0,0)).to_utc().strftime('%Y-%m-%d %H:%M:%S') and date_planned_start &lt;= datetime.datetime.combine(datetime.date.today(), datetime.time(23,59,59)).to_utc().strftime('%Y-%m-%d %H:%M:%S')</attribute>
+            </field>
+        </field>
+    </record>
+</odoo>
