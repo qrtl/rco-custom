@@ -6,10 +6,10 @@
         <field name="report_type">qweb-pdf</field>
         <field
             name="report_name"
-        >report_lot_custom_layout.report_lot_custom_label</field>
+        >stock_lot_label_layout_custom.report_lot_custom_label</field>
         <field
             name="report_file"
-        >report_lot_custom_layout.report_lot_custom_label</field>
+        >stock_lot_label_layout_custom.report_lot_custom_label</field>
         <field name="paperformat_id" ref="product.paperformat_label_sheet" />
         <field name="print_report_name">'Lot-Serial - %s' % object.name</field>
         <field name="binding_model_id" ref="stock.model_stock_lot" />
