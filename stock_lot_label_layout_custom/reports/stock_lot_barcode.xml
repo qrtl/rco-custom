@@ -13,10 +13,10 @@
             >
                 <t t-foreach="count" t-as="c">
                     <t t-if="c == 1">
-                        <span style="font-size:60px !important;">Odoo用</span>
+                        <span style="font-size:40px !important;">Odoo用</span>
                     </t>
                     <t t-else="">
-                        <span style="font-size:60px !important;">投入ホッパー用</span>
+                        <span style="font-size:40px !important;">投入ホッパー用</span>
                     </t>
                     <table class="my-0 table table-sm table-borderless">
                         <t t-foreach="range(nRows)" t-as="row">
@@ -67,12 +67,12 @@
                                                         name="gs1_datamatrix_lot"
                                                         t-if="o.product_id.tracking == 'lot'"
                                                         t-set="final_barcode"
-                                                        t-value="(final_barcode or '') + o.product_id.name+ '#'+ '10'+ o.name"
+                                                        t-value="(final_barcode or '') + o.product_id.barcode+ '#'+ '10'+ o.name"
                                                     />
                                                     <t
                                                         t-elif="o.product_id.tracking == 'serial'"
                                                         t-set="final_barcode"
-                                                        t-value="(final_barcode or '') + o.product_id.name+ '#'+ '21' + o.name"
+                                                        t-value="(final_barcode or '') + o.product_id.barcode+ '#'+ '21' + o.name"
                                                     />
                                                 </t>
                                                 <t t-else="">
@@ -134,7 +134,7 @@
                                                 <t t-if="c == 0">
                                                     <t
                                                         t-set="final_barcode"
-                                                        t-value="o.product_id.name + '#' + o.name"
+                                                        t-value="o.product_id.barcode + '#' + o.name"
                                                     />
                                                     <div
                                                         t-esc="final_barcode"
