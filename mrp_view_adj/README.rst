@@ -22,7 +22,8 @@ MRP View Adj
 
 |badge1| |badge2| |badge3|
 
-This module adjusts the attributes of date_planned_start in the tree view of MRP production.
+This module adjusts the attributes of date_planned_start in the tree
+view of MRP production.
 
 **Table of contents**
 
@@ -43,12 +44,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile Limited
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `qrtl/rco-custom <https://github.com/qrtl/rco-custom/tree/16.0/mrp_view_adj>`_ project on GitHub.
 
